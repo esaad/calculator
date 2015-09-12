@@ -84,7 +84,14 @@ else if ( !strcmp(argv[1], "fancy")) {
 }
 
 else if (!strcmp(argv[1], "norm")) {
+    
+    if (argc < 5) {
+        	printf("usage: ./test < fancy||norm add / sub / div / mult >\n");
+goto end;
+    }
+    else {
     goto move;
+    }
 }
 
 else {
@@ -202,16 +209,16 @@ if ( !strcmp(argv[1], "fancy")) {
 
 else {
 
-int x, n, r, w;
+// int x, n, r, w;
 
-w = 50;
-n = 10000;
+// w = 50;
+// n = 10000;
 
-for (int i=0; i<n; i++) {
-loadBar(i, n, r, w);
-}
+// for (int i=0; i<n; i++) {
+// loadBar(i, n, r, w);
+// }
 
-if ( !strcmp(argv[1], "add")) { 
+if ( !strcmp(argv[2], "add")) { 
 double a = atof(argv[3]);
 double b = atof(argv[4]);
 double sum = add(a,b);
@@ -222,7 +229,7 @@ printf("the sum is : %G\n", sum);
 return sum;
 }
 
-else if ( !strcmp(argv[1], "sub")) {
+else if ( !strcmp(argv[2], "sub")) {
 
 double a = atof(argv[3]);
 double b = atof(argv[4]);
@@ -231,7 +238,7 @@ printf("the output is : %G\n", subb);
 return subb;
 }
 
-else if (!strcmp(argv[1], "div")) {
+else if (!strcmp(argv[2], "div")) {
 
 double a = atof(argv[3]);
 double b = atof(argv[4]);
@@ -240,7 +247,7 @@ printf("the output is : %G\n", subb);
 return subb;
 }
 
-else if (!strcmp(argv[1], "mult")) {
+else if (!strcmp(argv[2], "mult")) {
 
 double a = atof(argv[3]);
 double b = atof(argv[4]);
