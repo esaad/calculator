@@ -2,12 +2,14 @@
 #include <string.h>
 #include <stdlib.h>     /* atof */
 #include <unistd.h>
+#include<stdbool.h>
 
-char *addmode = "add";
-char *submode = "sub";
-char *divmode = "div";
-char *multmode = "mult";
-
+// char addmode[3] = "add";
+// char submode[3] = "sub";
+// char divmode[3] = "div";
+// char multmode[4] = "mult";
+// char advanced[5] = "fancy";
+// char normal[4] = "norm";
 
 double add( double x, double y)
 {
@@ -63,12 +65,116 @@ static inline void loadBar(int x, int n, int r, int w)
 
 
 main (int argc, char *argv[]) {
-if ( argc < 4 ) // we have to take  3arg
+
+printf("printing args :%s\n", argv[1]);
+printf("printing args :%s\n", argv[2]);
+printf("printing args :%s\n", argv[3]);
+printf("printing args :%s\n", argv[4]);
+
+ 
+ if ( argc < 2 ) // we have to take  3arg
  {
-	printf("usage: ./test < add / sub / div / mult\n");
+	printf("usage: ./test < fancy||norm add / sub / div / mult >\n");
 goto end;
  }
  
+else if ( !strcmp(argv[1], "fancy")) {
+    printf("advanced mode selected");
+    goto move;
+}
+
+else if (!strcmp(argv[1], "norm")) {
+    goto move;
+}
+
+else {
+    printf("usage: ./test < fancy||norm add / sub / div / mult >\n");
+goto end;
+}
+
+ move:
+if ( !strcmp(argv[1], "fancy")) {
+    
+     //Variable used for reading the user input
+    char option;
+    //Variable used for controlling the while loop
+    bool isRunning = true;
+    double number1;
+    double number2;
+    double result;
+    while(isRunning==true)
+    {
+        //Clears the screen
+        system("clear");        //For UNIX-based OSes
+
+        //Clears the keyboard buffer
+        fflush(stdin);
+        //Outputs the options to console
+        puts("\n[1]ADD"
+             "\n[2]SUB"
+             "\n[3]DIV"
+             "\n[4]MULT"
+             "\n.........."
+             "\n[x]Exit");
+        //Reads the user's option
+        option = getchar();
+        //Selects the course of action specified by the option
+        switch(option)
+        {
+            case '1':
+                     printf("Type in first number \n");
+	                 scanf("%lf", &number1);
+	                 printf("Type in second number \n");
+	                 scanf("%lf", &number2);
+	                 printf("first number %G\n", number1);
+	                 printf("second number %G\n", number2);
+	                 result = add(number1,number2);
+	                 printf("Output is : %G\n", result);
+	                 return result;
+                     break;
+            case '2':
+                     printf("Type in first number \n");
+	                 scanf("%lf", &number1);
+	                 printf("Type in second number \n");
+	                 scanf("%lf", &number2);
+	                 result = sub(number1,number2);
+	                 printf("Output is : %G\n", result);
+                     return result;
+                     break;
+            case '3':
+                     printf("Type in first number \n");
+	                 scanf("%lf", &number1);
+	                 printf("Type in second number \n");
+	                 scanf("%lf", &number2);
+                     result = divv(number1,number2);
+	                 printf("Output is : %G\n", result);
+                     return result;
+                     break;
+            case '4':
+                     printf("Type in first number \n");
+	                 scanf("%lf", &number1);
+	                 printf("Type in second number \n");
+	                 scanf("%lf", &number2);
+	                 result = mult(number1,number2);
+	                 printf("Output is : %G\n", result);
+                     return result;
+                     break;
+            //...
+            case 'x':
+                     //Exits the system
+                     isRunning = false;
+                     return 0;
+            default :
+                     //User enters wrong input
+                     //TO DO CODE
+                     break;
+        }
+    }
+    return 0;
+}
+
+else {
+
 int x, n, r, w;
 
 w = 50;
@@ -78,9 +184,9 @@ for (int i=0; i<n; i++) {
 loadBar(i, n, r, w);
 }
 
-if ( *argv[1] == *addmode ) { 
-double a = atof(argv[2]);
-double b = atof(argv[3]);
+if ( !strcmp(argv[1], "add")) { 
+double a = atof(argv[3]);
+double b = atof(argv[4]);
 double sum = add(a,b);
 printf("mode is : %s\n", argv[1]);
 printf("a is : %G\n", a);
@@ -89,28 +195,28 @@ printf("the sum is : %G\n", sum);
 return sum;
 }
 
-else if ( *argv[1] == *submode ) {
+else if ( !strcmp(argv[1], "sub")) {
 
-double a = atof(argv[2]);
-double b = atof(argv[3]);
+double a = atof(argv[3]);
+double b = atof(argv[4]);
 double subb = sub(a,b);
 printf("the output is : %G\n", subb);
 return subb;
 }
 
-else if (*argv[1] == *divmode ) {
+else if (!strcmp(argv[1], "div")) {
 
-double a = atof(argv[2]);
-double b = atof(argv[3]);
+double a = atof(argv[3]);
+double b = atof(argv[4]);
 double subb = divv(a,b);
 printf("the output is : %G\n", subb);
 return subb;
 }
 
-else if (*argv[1] == *multmode ) {
+else if (!strcmp(argv[1], "mult")) {
 
-double a = atof(argv[2]);
-double b = atof(argv[3]);
+double a = atof(argv[3]);
+double b = atof(argv[4]);
 double subb = mult(a,b);
 printf("the output is : %G\n", subb);
 return subb;
@@ -122,4 +228,6 @@ goto end;
 }
 end:
 printf("wrong args!!! terminating\n");
+}
+
 }

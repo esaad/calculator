@@ -6,3 +6,7 @@
 
 ### To Run
 #### ./calculator
+
+### Modes
+#### fancy -- > interactive mode
+#### norm  -- > cmd mode 
