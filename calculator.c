@@ -61,6 +61,7 @@ static inline void loadBar(int x, int n, int r, int w)
     // ANSI Control codes to go back to the
     // previous line and clear it.
     printf("]\n\033[F\033[J");
+   // fflush(stdout);
 }
 
 
@@ -109,7 +110,10 @@ if ( !strcmp(argv[1], "fancy")) {
     double number1;
     double number2;
     double result;
-     int x, n, r, w;
+     int x =0, n=0, r=50, w=0;
+    w = 500;
+    n = 10000;
+                    
     while(isRunning==true)
     {
         //Clears the screen
@@ -136,12 +140,13 @@ if ( !strcmp(argv[1], "fancy")) {
 	                 scanf("%lf", &number2);
 	                 printf("first number %G\n", number1);
 	                 printf("second number %G\n", number2);
-                     w = 50;
-                     n = 5000;
                     
-                     for (int i=0; i<n; i++) {
-                     loadBar(i, n, r, w);
-                     }
+                    //  for (int i=0; i<n; i++) {
+                    
+                    //  loadBar(i, n, r, w);
+                     
+                     //sleep(1);
+                     //}
 	                 result = add(number1,number2);
 	                 printf("Output is : %G\n", result);
 	                 return result;
@@ -151,12 +156,11 @@ if ( !strcmp(argv[1], "fancy")) {
 	                 scanf("%lf", &number1);
 	                 printf("Type in second number \n");
 	                 scanf("%lf", &number2);
-                     w = 50;
-                     n = 5000;
+                 
                     
-                     for (int i=0; i<n; i++) {
-                     loadBar(i, n, r, w);
-                     }
+                    //  for (int i=0; i<n; i++) {
+                    //  loadBar(i, n, r, w);
+                    //  }
 	 
 	                 result = sub(number1,number2);
 	                 printf("Output is : %G\n", result);
@@ -167,12 +171,10 @@ if ( !strcmp(argv[1], "fancy")) {
 	                 scanf("%lf", &number1);
 	                 printf("Type in second number \n");
 	                 scanf("%lf", &number2);
-                     w = 50;
-                     n = 5000;
                     
-                     for (int i=0; i<n; i++) {
-                     loadBar(i, n, r, w);
-                     }
+                    //  for (int i=0; i<n; i++) {
+                    //  loadBar(i, n, r, w);
+                    //  }
 	 
                      result = divv(number1,number2);
 	                 printf("Output is : %G\n", result);
@@ -183,12 +185,11 @@ if ( !strcmp(argv[1], "fancy")) {
 	                 scanf("%lf", &number1);
 	                 printf("Type in second number \n");
 	                 scanf("%lf", &number2);
-	                 w = 50;
-                     n = 5000;
+
                     
-                     for (int i=0; i<n; i++) {
-                     loadBar(i, n, r, w);
-                     }
+                    //  for (int i=0; i<n; i++) {
+                    //  loadBar(i, n, r, w);
+                    //  }
 	                 result = mult(number1,number2);
 	                 printf("Output is : %G\n", result);
                      return result;
