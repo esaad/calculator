@@ -75,7 +75,7 @@ main (int argc, char *argv[]) {
  
  if ( argc < 2 ) // we have to take  3arg
  {
-	printf("usage: ./test < fancy||norm add / sub / div / mult >\n");
+	printf("usage: ./calculator < fancy||norm add / sub / div / mult >\n");
 goto end;
  }
  
@@ -87,7 +87,7 @@ else if ( !strcmp(argv[1], "fancy")) {
 else if (!strcmp(argv[1], "norm")) {
     
     if (argc < 5) {
-        	printf("usage: ./test < fancy||norm add / sub / div / mult >\n");
+        	printf("usage: ./calculator < fancy||norm add / sub / div / mult >\n");
 goto end;
     }
     else {
@@ -96,7 +96,7 @@ goto end;
 }
 
 else {
-    printf("usage: ./test < fancy||norm add / sub / div / mult >\n");
+    printf("usage: ./calculator < fancy||norm add / sub / div / mult >\n");
 goto end;
 }
 
